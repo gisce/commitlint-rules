@@ -7,6 +7,7 @@ on:
 
 env:
   LIBRARY_NAME: "gisce/commitlint-rules"
+  BRANCH_NAME: "alpha"
 
 jobs:
   update-dependents:
@@ -16,15 +17,15 @@ jobs:
       matrix:
         include:
           - project: "gisce/ooui.js"
-            branch: "alpha"
+            branch: ${{ env.BRANCH_NAME }}
           - project: "gisce/react-formiga-table"
-            branch: "alpha"
+            branch: ${{ env.BRANCH_NAME }}
           - project: "gisce/react-ooui"
-            branch: "alpha"
+            branch: ${{ env.BRANCH_NAME }}
           - project: "gisce/powerp.js"
-            branch: "alpha"
+            branch: ${{ env.BRANCH_NAME }}
           - project: "gisce/webclient"
-            branch: "alpha"
+            branch: ${{ env.BRANCH_NAME }}
           - project: "gisce/conscheck"
             branch: "main"
     steps:
