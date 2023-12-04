@@ -72,10 +72,17 @@ jobs:
         run: |
           npm install
 
+      - name: Format Library Name
+        id: format-lib-name
+        run: |
+          FORMATTED_NAME="${{ github.event.inputs.libraryName }}"
+          FORMATTED_NAME="${FORMATTED_NAME//\//-}"
+          echo "FORMATTED_NAME=$FORMATTED_NAME" >> $GITHUB_ENV
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GH_PAT }}
           commit-message: "fix: Update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
           title: "Update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
-          branch: "update-${{ github.event.inputs.libraryName }}-${{ github.event.inputs.tagName }}"
+          branch: "update-${{ env.FORMATTED_NAME }}-${{ github.event.inputs.tagName }}"
