@@ -1,0 +1,27 @@
+name: ALPHA - Update dependent projects
+
+env:
+  LIBRARY_NAME: 'gisce/commitlint-rules'
+  BRANCH_NAME: 'alpha'
+  DEPENDENT_PROJECTS: 'gisce/ooui.js,gisce/react-formiga-table,gisce/react-ooui,@gisce/powerp.js,gisce/webclient,gisce/conscheck'
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  update-dependents:
+    if: github.event.release.prerelease == false && !contains(github.event.release.tag_name, '-alpha.') && !contains(github.event.release.tag_name, '-rc.')
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [${{ env.DEPENDENT_PROJECTS }}]
+    steps:
+      - name: Call Reusable Workflow for Each Project
+        uses: ./.github/workflows/create_dependent_pr.yml
+        with:
+          dependentProject: ${{ matrix.project }}
+          tagName: ${{ github.event.release.tag_name }}
+          dependentProjectBranch: ${{ env.BRANCH_NAME }}
+          libraryName: ${{ env.LIBRARY_NAME }}
