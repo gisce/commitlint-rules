@@ -1,0 +1,57 @@
+{
+  "name": "@gisce/commitlint-rules",
+  "version": "1.0.0",
+  "description": "Shareable commitlint config for GISCE JS projects",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": "20.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gisce/commitlint-rules.git"
+  },
+  "author": "GISCE-TI, S.L",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gisce/commitlint-rules/issues"
+  },
+  "homepage": "https://github.com/gisce/commitlint-rules#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/npm": "10.0.4",
+    "semantic-release": "21.0.7"
+  },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "develop",
+        "prerelease": "rc"
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      "@semantic-release/github",
+      "@semantic-release/git"
+    ]
+  }
+}
