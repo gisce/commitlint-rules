@@ -2,7 +2,7 @@ name: Create PR on dependent project
 
 on:
   workflow_call:
-    inputs: &sharedInputs
+    inputs:
       libraryName:
         description: "Name of this library (e.g., gisce/commitlint-rules)"
         required: true
@@ -20,7 +20,23 @@ on:
         required: true
         default: "v1.0.0-alpha.0"
   workflow_dispatch:
-    inputs: *sharedInputs
+    inputs:
+      libraryName:
+        description: "Name of this library (e.g., gisce/commitlint-rules)"
+        required: true
+        default: "gisce/commitlint-rules"
+      dependentProject:
+        description: "Name of dependent projects (e.g., gisce/ooui.js)"
+        required: true
+        default: "gisce/ooui.js"
+      dependentProjectBranch:
+        description: "Name of the branch for the dependent project (e.g., alpha)"
+        required: true
+        default: "alpha"
+      tagName:
+        description: "Name of the tag (e.g., v1.0.0-alpha.0)"
+        required: true
+        default: "v1.0.0-alpha.0"
 
 jobs:
   create-pr:
