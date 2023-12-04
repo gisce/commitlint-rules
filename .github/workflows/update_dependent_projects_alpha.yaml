@@ -26,7 +26,7 @@ jobs:
           ]
     steps:
       - name: Call Reusable Workflow for Each Project
-        uses: gisce/create-update-version-pr@v0.0.2
+        uses: gisce/create-update-version-pr@v0.0.3
         with:
           dependentProject: ${{ matrix.project }}
           tagName: ${{ github.event.release.tag_name }}
