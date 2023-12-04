@@ -7,7 +7,6 @@ on:
 
 env:
   LIBRARY_NAME: "gisce/commitlint-rules"
-  BRANCH_NAME: "alpha"
 
 jobs:
   update-dependents:
@@ -15,21 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project:
-          [
-            "gisce/ooui.js",
-            "gisce/react-formiga-table",
-            "gisce/react-ooui",
-            "gisce/powerp.js",
-            "gisce/webclient",
-            "gisce/conscheck",
-          ]
+        include:
+          - project: "gisce/ooui.js"
+            branch: "alpha"
+          - project: "gisce/react-formiga-table"
+            branch: "alpha"
+          - project: "gisce/react-ooui"
+            branch: "alpha"
+          - project: "gisce/powerp.js"
+            branch: "alpha"
+          - project: "gisce/webclient"
+            branch: "alpha"
+          - project: "gisce/conscheck"
+            branch: "main"
     steps:
       - name: Call Reusable Workflow for Each Project
         uses: gisce/create-update-version-pr@v0.0.5
         with:
           dependentProject: ${{ matrix.project }}
           tagName: ${{ github.event.release.tag_name }}
-          dependentProjectBranch: ${{ env.BRANCH_NAME }}
+          dependentProjectBranch: ${{ matrix.branch }}
           libraryName: ${{ env.LIBRARY_NAME }}
           githubToken: ${{ secrets.GH_PAT }}
