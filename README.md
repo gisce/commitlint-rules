@@ -7,22 +7,20 @@ This package provides a custom set of rules for commit messages in all GISCE pro
 To use `gisce/commitlint-rules` in your project, first install the package along with `commitlint`:
 
 ```bash
-npm install --save-dev @commitlint/cli gisce/commitlint-rules
+npm install --save-dev @commitlint/cli @gisce/commitlint-rules
 ```
 
 ## Configuration
 
-After installation, create a `commitlint.config.js`` file in the root of your project with the following content:
+After installation, create a `commitlint.config.js` file in the root of your project with the following content:
 
 ```js
 module.exports = {
-  extends: ["gisce/commitlint-rules"],
+  extends: ["@gisce/commitlint-rules"],
 };
 ```
 
-This configuration extends the custom rules defined in `gisce/commitlint-rules`.
-
-## Rules
+This configuration extends the custom rules defined in `@gisce/commitlint-rules`.
 
 ## Rules
 
@@ -31,7 +29,7 @@ The custom rules defined in this package are as follows:
 - `body-max-line-length`: Set to always ignore the line length in the commit message body.
 - `footer-max-line-length`: Set to always ignore the line length in the commit message footer.
 
-These rules are built on top of the conventional commit rules provided by `@commitlint/config-conventional`.
+These rules are built on top of the conventional commit rules provided by [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional).
 
 
 ## Usage
