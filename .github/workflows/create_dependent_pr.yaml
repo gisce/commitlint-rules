@@ -2,7 +2,7 @@ name: Create PR on dependent project
 
 on:
   workflow_call:
-    inputs:
+    inputs: &sharedInputs
       libraryName:
         description: "Name of this library (e.g., gisce/commitlint-rules)"
         required: true
@@ -20,6 +20,7 @@ on:
         required: true
         default: "v1.0.0-alpha.0"
   workflow_dispatch:
+    inputs: *sharedInputs
 
 jobs:
   create-pr:
