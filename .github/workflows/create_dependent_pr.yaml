@@ -83,6 +83,6 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GH_PAT }}
-          commit-message: "fix: Update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
-          title: "Update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
+          commit-message: "fix: update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
+          title: "update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
           branch: "update-${{ env.FORMATTED_NAME }}-${{ github.event.inputs.tagName }}"
