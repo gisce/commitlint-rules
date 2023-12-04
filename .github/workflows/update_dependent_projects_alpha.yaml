@@ -6,9 +6,17 @@ on:
   workflow_dispatch:
 
 env:
-  LIBRARY_NAME: 'gisce/commitlint-rules'
-  BRANCH_NAME: 'alpha'
-  DEPENDENT_PROJECTS: 'gisce/ooui.js,gisce/react-formiga-table,gisce/react-ooui,gisce/powerp.js,gisce/webclient,gisce/conscheck'
+  LIBRARY_NAME: "gisce/commitlint-rules"
+  BRANCH_NAME: "alpha"
+  DEPENDENT_PROJECTS:
+    [
+      "gisce/ooui.js",
+      "gisce/react-formiga-table",
+      "gisce/react-ooui",
+      "gisce/powerp.js",
+      "gisce/webclient",
+      "gisce/conscheck",
+    ]
 
 jobs:
   update-dependents:
@@ -16,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [${{ env.DEPENDENT_PROJECTS }}]
+        project: ${{ fromJson(env.DEPENDENT_PROJECTS) }}
     steps:
       - name: Call Reusable Workflow for Each Project
         uses: ./.github/workflows/create_dependent_pr.yml
