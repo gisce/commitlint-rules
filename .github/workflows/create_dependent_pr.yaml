@@ -48,6 +48,7 @@ on:
 
 jobs:
   create-pr:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout dependent project repository
         uses: actions/checkout@v2
