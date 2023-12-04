@@ -8,7 +8,7 @@ on:
 env:
   LIBRARY_NAME: 'gisce/commitlint-rules'
   BRANCH_NAME: 'alpha'
-  DEPENDENT_PROJECTS: 'gisce/ooui.js,gisce/react-formiga-table,gisce/react-ooui,@gisce/powerp.js,gisce/webclient,gisce/conscheck'
+  DEPENDENT_PROJECTS: 'gisce/ooui.js,gisce/react-formiga-table,gisce/react-ooui,gisce/powerp.js,gisce/webclient,gisce/conscheck'
 
 jobs:
   update-dependents:
