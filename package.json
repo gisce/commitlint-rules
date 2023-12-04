@@ -1,6 +1,6 @@
 {
   "name": "@gisce/commitlint-rules",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Shareable commitlint config for GISCE JS projects",
   "files": [
     "index.js"
