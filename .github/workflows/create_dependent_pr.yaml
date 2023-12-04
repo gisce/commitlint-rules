@@ -41,10 +41,10 @@ on:
         required: true
         default: "alpha"
       tagName:
-        description: "Name of the tag (e.g., v1.0.0-alpha.0)"
+        description: "Name of the tag (e.g., v1.0.0)"
         type: string
         required: true
-        default: "v1.0.0-alpha.0"
+        default: "v1.0.0"
 
 jobs:
   create-pr:
@@ -76,6 +76,6 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GH_PAT }}
-          commit-message: "fix: Update ${{ github.event.inputs.libraryName }} to ${{ github.event.release.tag_name }}"
-          title: "Update ${{ github.event.inputs.libraryName }} to ${{ github.event.release.tag_name }}"
-          branch: "update-${{ github.event.inputs.libraryName }}-${{ github.event.release.tag_name }}"
+          commit-message: "fix: Update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
+          title: "Update ${{ github.event.inputs.libraryName }} to ${{ github.event.inputs.tagName }}"
+          branch: "update-${{ github.event.inputs.libraryName }}-${{ github.event.inputs.tagName }}"
