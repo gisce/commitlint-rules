@@ -7,25 +7,23 @@ on:
 
 env:
   LIBRARY_NAME: "gisce/commitlint-rules"
-  BRANCH_NAME: "alpha"
 
 jobs:
   update-dependents:
-    if: github.event.release.prerelease == false && !contains(github.event.release.tag_name, '-alpha.') && !contains(github.event.release.tag_name, '-rc.')
     runs-on: ubuntu-latest
     strategy:
       matrix:
         include:
           - project: "gisce/ooui.js"
-            branch: ${{ env.BRANCH_NAME }}
+            branch: "alpha"
           - project: "gisce/react-formiga-table"
-            branch: ${{ env.BRANCH_NAME }}
+            branch: "alpha"
           - project: "gisce/react-ooui"
-            branch: ${{ env.BRANCH_NAME }}
+            branch: "alpha"
           - project: "gisce/powerp.js"
-            branch: ${{ env.BRANCH_NAME }}
+            branch: "alpha"
           - project: "gisce/webclient"
-            branch: ${{ env.BRANCH_NAME }}
+            branch: "alpha"
           - project: "gisce/conscheck"
             branch: "main"
     steps:
